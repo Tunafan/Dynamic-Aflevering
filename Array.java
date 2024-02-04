@@ -55,7 +55,6 @@ class DynamicArray {
     if (index < 0 || index >= count) {
       throw new IndexOutOfBoundsException("Index " + index + " does not exist");
     }
-
     for (int i = index; i < count - 1; i++) {
       arr[i] = arr[i + 1];
     }
