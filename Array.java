@@ -30,36 +30,46 @@ class DynamicArray {
     }
     arr[count++] = student;
   }
+
+  public Student get(int index) {
+    if (index < 0 || index >= count) { //fejlbehandling
+      throw new IndexOutOfBoundsException("Index " + index + " not found :'(");
+    }
+    return arr[index];
+  }
+
+  public int size() {
+    return count;
+  }
+}
+
+// bruger count-variablens talværdi (minus 1) og sætter det indeks til 'null'.
+public void remove() {
+  if (count > 0) {
+    arr[--count] = null;
+  } else {
+    System.out.println("Array is already empty. Nothing to remove.");
+  }
 }
 
 public class Array {
 
   public static void main(String[] args) {
     DynamicArray activeStudents = new DynamicArray(3);
+
+    Student s1 = new Student(3, "Harry James Potter");
+    Student s2 = new Student(3, "Ronald Beastley");
+    Student s3 = new Student(3, "Hermione FrontTeeth Granger");
+    Student s4 = new Student(4, "Cedric Diggory");
+    Student s5 = new Student(4, "Cho Chang");
+    s1.setAge(17);
+    s2.setAge(17);
+    s3.setAge(17);
+    s4.setAge(18);
+    s5.setAge(18);
+
+    activeStudents.add(s1);
+    activeStudents.add(s2);
+    activeStudents.add(s3);
   }
 }
-
-
-Student s1 = new Student(3, "Harry James Potter");
-Student s2 = new Student(3, "Ron Weasley");
-Student s3 = new Student(3, "Hermione FrontTeeth Granger");
-s1.setAge(18);
-s2.setAge(18);
-s3.setAge(17);
-
-DynamicArray activeStudents = new DynamicArray(3);
-
-activeStudents.add(s1);
-activeStudents.add(s2);
-activeStudents.add(s3);
-
-// System.out.println("Array contains " + activeStudents.size() + " elements");  // skriver at der er 3
-// System.out.println("#0: " + activeStudents.get(0));   // Udskriver Harry
-// System.out.println("#1: " + activeStudents.get(1));   // Udskriver Ron
-// System.out.println("#2: " + activeStudents.get(2));   // Udskriver Hermione
-
-// activeStudents.remove(1);
-
-// System.out.println("Array contains " + activeStudents.size() + " elements");  // skriver at der er 2
-// System.out.println("#0: " + activeStudents.get(0));   // Udskriver Harry
-// System.out.println("#1: " + activeStudents.get(1));
