@@ -41,14 +41,27 @@ class DynamicArray {
   public int size() {
     return count;
   }
-}
 
-// bruger count-variablens talværdi (minus 1) og sætter det indeks til 'null'.
-public void remove() {
-  if (count > 0) {
-    arr[--count] = null;
-  } else {
-    System.out.println("Array is already empty. Nothing to remove.");
+  // bruger count-variablens talværdi (minus 1) og sætter det indeks til 'null'.
+  public void remove() {
+    if (count > 0) {
+      arr[--count] = null;
+    } else {
+      System.out.println("Cannot delete. Array is empty");
+    }
+  }
+
+  public void removeIndex(int index) {
+    if (index < 0 || index >= count) {
+      throw new IndexOutOfBoundsException("Index " + index + " does not exist");
+    }
+
+    for (int i = index; i < count - 1; i++) {
+      arr[i] = arr[i + 1];
+    }
+
+    arr[count - 1] = null;
+    count--;
   }
 }
 
@@ -67,9 +80,10 @@ public class Array {
     s3.setAge(17);
     s4.setAge(18);
     s5.setAge(18);
-
     activeStudents.add(s1);
     activeStudents.add(s2);
     activeStudents.add(s3);
+    activeStudents.add(s4);
+    activeStudents.add(s5);
   }
 }
