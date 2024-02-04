@@ -62,6 +62,26 @@ class DynamicArray {
     arr[count - 1] = null;
     count--;
   }
+
+  public void set(int index, Student student) {
+    if (index >= count) {
+      throw new IndexOutOfBoundsException(
+        "Highest index is " + (count - 1) + ". Try that instead?"
+      );
+    }
+    arr[index] = student;
+  }
+
+  public void clear() {
+    if (count > 0) {
+      for (int i = count - 1; i >= 0; i--) {
+        System.out.println("Deleting student " + arr[i] + "...");
+        arr[i] = null;
+        System.out.println("Succesfully deleted!");
+      }
+      count = 0;
+    }
+  }
 }
 
 public class Array {
